@@ -3,45 +3,48 @@ import sys
 import math
 import random
 
-# Initialize pygame
+# Initialize pygame modules
 pygame.init()
 
 # Screen dimensions and settings
 width, height = 800, 600
-screen = pygame.display.set_mode((width, height))
-pygame.display.set_caption("Pac-Man Game")
+screen = pygame.display.set_mode((width, height)) #creates a window or screen
+pygame.display.set_caption("Pac-Man Game") #window tittle
 
 # Colors
-background_color = (0, 0, 0)    # Black
-pacman_color = (255, 255, 0)    # Yellow
-ghost_color = (255, 0, 0)       # Red
-wall_color = (0, 0, 255)        # Blue
-dot_color = (255, 255, 255)     # White
+background_color = (0,0,0) #Black
+pacman_color = (255, 255, 0) #Yellow
+ghost_color = (255, 0, 0) #Red
+wall_color = (0, 0, 255) #Blue
+dot_color = (0, 255, 255) #White
 
 # Pac-Man settings
 pacman_radius = 20
-pacman_x, pacman_y = 100, 100   # Initial position
-pacman_speed = 5
-mouth_angle = 0                 # For opening and closing the mouth
-mouth_opening = 15              # Angle of mouth opening
+pacman_x, pacman_y = 80, 100   # Initial position
+pacman_speed = 10
+mouth_angle = 0 # For opening and closing the mouth
+mouth_opening = 15 # Angle of mouth opening
 
 # Ghost settings
 ghost_radius = 20
+# initializes a list named ghosts. Each element of this list will represent a ghost in the game.
 ghosts = [
-    {"x": random.randint(200, width - 100), "y": random.randint(100, height - 100), "speed_x": 2, "speed_y": 2},
-    {"x": random.randint(200, width - 100), "y": random.randint(100, height - 100), "speed_x": -2, "speed_y": 2}
+#randomly generates the coordinates of the pacman to ensure movement
+    {"x": random.randint(200, width - 100), "y": random.randint(100, height - 100), "speed_x": -3, "speed_y": 3},
+    {"x": random.randint(200, width - 100), "y": random.randint(100, height - 100), "speed_x": 5, "speed_y": -2},
+    {"x": random.randint(200, width - 100), "y": random.randint(100, height - 100), "speed_x": 4, "speed_y": 4}
 ]
-
 # Wall dimensions with an opening
 walls = [
-    pygame.Rect(100, 100, 250, 20),  # Top left section of top wall
-    pygame.Rect(450, 100, 250, 20),  # Top right section of top wall (gap in the middle)
-    pygame.Rect(100, 480, 600, 20),  # Bottom horizontal wall
-    pygame.Rect(100, 100, 20, 400),  # Left vertical wall
-    pygame.Rect(680, 100, 20, 400)   # Right vertical wall
+    pygame.Rect(100, 100, 250, 10),  # Top left section of top wall
+    pygame.Rect(450, 100, 250, 10),  # Top right section of top wall (gap in the middle)
+    pygame.Rect(100, 490, 600, 10),  # Bottom horizontal wall
+    pygame.Rect(100, 100, 10, 400),  # Left vertical wall
+    pygame.Rect(690, 100, 10, 400)   # Right vertical wall
 ]
 
-# Dot positions
+# Dot coordinates List Comprehension: The code uses a list comprehension to create a list of coordinates,
+# each representing a dot's position. List comprehensions are a concise way to create lists in Python.
 dots = [(200 + i * 50, 300) for i in range(10)]
 score = 0
 
