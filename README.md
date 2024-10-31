@@ -24,7 +24,7 @@ Pac-Man bounces off walls and can eat dots for points while avoiding collisions 
    cd Course-Work/Motion Graphics/Pac-Man.py
 
 2. Install Pygame:
-      pip install pygame sys math random
+   pip install pygame sys math random
    
 ## Usage
 1. Run the game:
