@@ -48,14 +48,18 @@ walls = [
 dots = [(200 + i * 50, 300) for i in range(10)]
 score = 0
 
+#Sets up the font used to display the score and game-over message on the screen.
 # Fonts
 font = pygame.font.Font(None, 36)
 
-# Function to draw Pac-Man with an open mouth
+#Draws Pac-Man with a "mouth" based on the current angle (mouth_angle).
+#This creates the effect of Pac-Man’s chomping by dynamically adjusting the opening angle.
 def draw_pacman(x, y, radius, angle):
     start_angle = math.radians(angle)
     end_angle = 2 * math.pi - start_angle
     pygame.draw.circle(screen, pacman_color, (int(x), int(y)), radius)
+
+    #Draws the mouth as a triangle (wedge) that overlays part of the circle.
     pygame.draw.polygon(screen, background_color, [
         (x, y),
         (x + radius * math.cos(start_angle), y - radius * math.sin(start_angle)),
@@ -100,7 +104,7 @@ while True:
                 if keys[pygame.K_DOWN]:
                     pacman_y -= pacman_speed
 
-        # Update mouth opening and closing
+        #Alternates the angle of Pac-Man's mouth for a chomping effect using a timer by pygame's internal clock
         mouth_angle = mouth_opening if (pygame.time.get_ticks() // 100) % 2 == 0 else 0
 
         # Move ghosts
