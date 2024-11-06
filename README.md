@@ -34,5 +34,5 @@ Pac-Man bounces off walls and can eat dots for points while avoiding collisions 
 
 ## Game Over Conditions
 - Colliding with a ghost will end the game.
-- Collect all dots to win the game. 
+- Collect all score multiplying dots to win the game. 
 
